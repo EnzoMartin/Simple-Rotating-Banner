@@ -53,8 +53,7 @@
 		var self = this;
 		if(self.options.indicators){
 			self.element.find('.bannerIndicator').on({
-				'mouseclick': function() {
-						console.log('sup');
+				'click': function() {
 					if (!$(this).hasClass('active')) {
 						self.goToBanner($(this).index());
 					}
@@ -63,7 +62,7 @@
 		}
 		if(self.options.arrows){
 			self.element.find('.bannerControlsWpr').on({
-				'mouseclick': function() {
+				'click': function() {
 					if($(this).hasClass('bannerControlsPrev')){
 						self.previousBanner();
 					} else {
