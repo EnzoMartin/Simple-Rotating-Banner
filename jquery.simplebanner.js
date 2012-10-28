@@ -1,3 +1,9 @@
+/* Written by Enzo Martin
+ *
+ * GitHub: https://github.com/EnzoMartin78/
+ * Twitter: EnzoMartin
+ */
+
 ;(function($, window, undefined) {
 
 	"use strict";
@@ -26,7 +32,10 @@
 		}, options);
 		this.init();
 	};
-
+	
+	/**
+     * Initializer
+     */
 	Simplebanner.prototype.init = function() {
 		this._bannerCount = this.element.find('.bannerList li').length;
 		this._bannerWidth = this.element.find('.bannerList li').outerWidth();
@@ -49,6 +58,7 @@
 		this.bindEvents();
 	};
 	
+	// This sets the basic events based off the options selected
 	Simplebanner.prototype.bindEvents = function() {
 		var self = this;
 		if(self.options.indicators){
@@ -85,6 +95,7 @@
 		}
 	};
 	
+	// Goes to the next banner - loops back to the first banner
 	Simplebanner.prototype.nextBanner = function() {
 		if (this._currentBanner.next().length) {
 			this._newBanner = this._currentBanner.next();
@@ -94,6 +105,7 @@
 		this.goToBanner(this._newBanner.index());
 	};
 
+	// Goes to the previous banner - loops back to the last banner
 	Simplebanner.prototype.previousBanner = function() {
 		if (this._currentBanner.prev().length) {
 			this._newBanner = this._currentBanner.prev();
@@ -104,7 +116,7 @@
 	};
 	
 	/**
-     * Goes to a specific slide
+     * Goes to a specific slide - This is called by both the Previous and Next methods as well as the Indicator buttons
      * @param slideIndex
      */
 	Simplebanner.prototype.goToBanner = function(slideIndex) {
@@ -119,6 +131,7 @@
 		},self.options.animTime);
 	};
 
+	// Create the correct amount of indicators based off total banners
 	Simplebanner.prototype.buildIndicators = function() {
 		var self = this;
 		var indicatorUl = self.element.find('.bannerIndicators ul');
@@ -129,7 +142,7 @@
 	};
 
 	/**
-     * STarts or stops the timer
+     * Starts or stops the timer for going to the next banner
      * @param timer
      */
 	Simplebanner.prototype.toggleTimer = function(timer) {
@@ -143,6 +156,7 @@
 		}
 	};
 
+	// jQuery wrapper method
 	$.fn.simplebanner = function(options) {
 		var method, args, ret = false;
 		if (typeof options === "string") {

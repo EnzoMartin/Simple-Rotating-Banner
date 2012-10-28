@@ -1,11 +1,11 @@
 .simpleBanner {overflow:hidden;position:relative;width:960px;padding:0 0 6px 0;}
-.simpleBanner.hiddenArrows .bannerControlsWpr {display:none;}
+.simpleBanner.hiddenArrows .bannerControlsWpr,
 .simpleBanner.hiddenIndicators .bannerIndicators {display:none;}
 
 .simpleBanner ul {list-style:none;margin:0;padding:0;}
 .simpleBanner .bannerListWpr {clear:both;overflow:hidden;}
 .simpleBanner .bannerListWpr ul {width:50000px;overflow:hidden;}
-.simpleBanner .bannerListWpr ul li {float:left;width:960px;}
+.simpleBanner .bannerListWpr ul li {float:left;width:960px;} /* Make sure to set the width for this */
 .simpleBanner .bannerListWpr ul li img {display:block;}
 .simpleBanner .bannerControlsWpr {cursor:pointer;padding:10px 12px;position:absolute;top:37%;background:#CCC;}
 .simpleBanner .bannerControlsPrev {border-radius:0 5px 5px 0;left:0;padding-left:5px;}
