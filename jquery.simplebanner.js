@@ -124,7 +124,7 @@
 		self.element.find('.bannerList li').each(function(){
 			indicatorUl.append('<li class="bannerIndicator"></li>');
 		});
-		indicatorUl.find('li:first').addClass('active');
+		indicatorUl.find('li:first').addClass('current');
 	};
 
 	/**
