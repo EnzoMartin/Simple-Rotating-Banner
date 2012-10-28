@@ -37,7 +37,7 @@ You can place anything you want inside the `<li>`, just remember that it uses `o
 * `indicators` defaults to `true` - This will add slide indicators at the bottom of the banner rotater
 * `pauseOnHover` defaults to `true` - This will make the banner rotater pause when you hover over it with the mouse if `autoRotate` is enabled
 * `autoRotate` defaults to `true` - This will make it rotate through all the banners automatically
-* `rotateTimeout` defaults to `2500` (2.5 seconds) - If `autoRotate` is enabled, this controls how long each banner displays before going to the next one
+* `rotateTimeout` defaults to `5000` (5 seconds) - If `autoRotate` is enabled, this controls how long each banner displays before going to the next one
 * `animTime` defaults to `300` (0.3 seconds) - This controls the speed at which the rotation animation happens
 
 Requirements
