@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Simple Rotating Banner</title>
+		<link rel="stylesheet" type="text/css" href="jquery.simplebanner.css"/>
+		<script type="text/javascript" src="js/jquery.simplebanner.js"></script>
+		<style>
+			body, html {font:100%;padding:0;margin:0;width:100%;height:100%;background:#666;}
+			#siteWpr {width:960px;margin:0 auto;}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.simpleBanner').stickybanner();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="siteWpr">
+			<div class="simpleBanner">
+				<div class="bannerControlsWpr bannerControlsPrev"><div class="bannerControls"></div></div>
+				<div class="bannerIndicator"><ul></ul></div>
+				<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
+				<div class="bannerListWpr">
+					<ul class="bannerList">
+						<li class="bannerSlide"><img src="http://hypernia.com/sites/default/files/25percentvoicebanner.png"></li>
+						<li class="bannerSlide"><img src="http://hypernia.com/sites/default/files/minecraftsalebanner5.jpg"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

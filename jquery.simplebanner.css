@@ -1,0 +1,22 @@
+.simpleBanner {overflow: hidden;position: relative;width: 960px;padding:0 0 6px 0;}
+.simpleBanner.hiddenArrows .bannerControlWpr {display:none;}
+.simpleBanner ul {list-style:none;margin:0;padding:0;}
+.simpleBanner .bannerListWpr {clear: both;overflow: hidden;width: 960px;}
+.simpleBanner .bannerListWpr ul {width: 50000px;overflow:hidden;}
+.simpleBanner .bannerListWpr ul li {float: left;position: relative;width: 960px;}
+.simpleBanner .bannerListWpr ul li img {display: block;width:960px;}
+.simpleBanner .bannerListWpr ul li .featBtnWpr {background-color: #FF7E00;border-top: 1px solid #CCCCCC;bottom: 0;left: 0;min-height: 27px;opacity: 0.8;position: absolute;width: 582px;}
+.simpleBanner .bannerListWpr ul li .featBtnWpr a {color: #FFFFFF;display: block;padding: 5px 40px 5px 15px;text-decoration: none;}
+.simpleBanner .bannerControlsPrev {border-radius: 0 5px 5px 0;left: 0;}
+.simpleBanner .bannerControlsNext {border-radius: 5px 0 0 5px;right: 0;}
+.simpleBanner .bannerControlsPrev .bannerControls {background-position: 0 -51px;}
+.simpleBanner .bannerControlsNext .bannerControls {background-position: -29px -51px;}
+.simpleBanner .bannerControlsPrev:hover .bannerControls {background-position: 0 0;}
+.simpleBanner .bannerControlsNext:hover .bannerControls {background-position: -29px 0;}
+.simpleBanner .bannerControlWpr {cursor: pointer;padding: 10px 12px;position: absolute;top: 37%;z-index: 2;}
+.simpleBanner .bannerControls {background-image: url("arrows.png");height: 51px;width: 29px;}
+.simpleBanner .bannerIndicator {background:transparent;right: 20px;opacity: 0.9;padding: 4px 8px 4px 0;position: absolute;bottom: 25px;z-index: 2;}
+.simpleBanner .bannerIndicator ul {overflow: hidden;}
+.simpleBanner .bannerIndicator .bannerIndicatorCircle {background: none repeat scroll 0 0 #5D5D5D;border-radius: 7px 7px 7px 7px;cursor: pointer;float: left;height: 15px;margin-left: 8px;width: 15px;}
+.simpleBanner .bannerIndicator .bannerIndicatorCircle:hover {background:#FFF;}
+.simpleBanner .bannerIndicator .bannerIndicatorCircle.active {background: none repeat scroll 0 0 #FF7E00;}
