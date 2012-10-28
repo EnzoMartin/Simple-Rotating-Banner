@@ -47,19 +47,23 @@
 	
 	Simplebanner.prototype.bindEvents = function() {
 		var self = this;
-		if(this.options.indicators){
-			this.element.find('.bannerIndicators li').click(function() {
-				if (!$(this).hasClass('active')) {
-					this.goToBanner($(this).index());
+		if(self.options.indicators){
+			self.element.find('.bannerIndicators li').on({
+				'mouseclick': function() {
+					if (!$(this).hasClass('active')) {
+						self.goToBanner($(this).index());
+					}
 				}
 			});
 		}
-		if(this.options.arrows){
-			this.element.find('.bannerControlsWpr').click(function() {
-				if($(this).hasClass('bannerControlsPrev')){
-					this.previousBanner();
-				} else {
-					this.nextBanner();
+		if(self.options.arrows){
+			self.element.find('.bannerControlsWpr').on({
+				'mouseclick': function() {
+					if($(this).hasClass('bannerControlsPrev')){
+						self.previousBanner();
+					} else {
+						self.nextBanner();
+					}
 				}
 			});
 		}
@@ -121,20 +125,12 @@
 	};
 
 	Simplebanner.prototype.buildIndicators = function() {
-		$('#featuredListWpr .banner-slide').each(function(){
-			$('#slideIndicator ul').append('<li class="featSlidebtn"></li>');
+		var self = this;
+		var indicatorUl = self.find('.bannerIndicators ul');
+		self.element.find('.banner-slide').each(function(){
+			indicatorUl.append('<li class="featSlidebtn"></li>');
 		});
-	};
-
-	Simplebanner.prototype.iniFeatured = function() {
-		if ($('#featuredListWpr .banner-slide').length > 1) {
-			buildIndicators();
-			$('#slideIndicator').css({'display':'block'});
-			$('#featuredListWpr li').first().addClass('currFeat');
-			$('#slideIndicator li').first().addClass('active');
-			_featWidth = $('#featuredListWpr ul li').width();
-			
-		}
+		indicatorUl.find('li:first').addClass('active');
 	};
 
 	Simplebanner.prototype.toggleTimer = function(timer) {
@@ -187,7 +183,9 @@
 
 	// Deathstar death beam
 	$(document).on("pageleave", function () {
-		//$(window).unbind('scroll resize');
+		$.each($.fn.simplebanner._instances, function() {
+			this.children().off();
+		});
 		$.fn.simplebanner._instances = [];
 	});
 }($, window));
