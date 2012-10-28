@@ -13,6 +13,8 @@
 		this._paused = false;
 		this._timer = {};
 		this._currentBanner = {};
+		this._bannerWidth = 0;
+		this._bannerCount = 0;
 		this.options = $.extend({
 			arrows: true,
 			indicators: true,
@@ -25,14 +27,18 @@
 	};
 
 	Simplebanner.prototype.init = function() {
-		if(this.options.indcators){
+		this._bannerCount = $(this.element).find('.bannerList li').length;
+		this._bannerWidth = $(this.element).find('.bannerList li').outerWidth();
+		this.currentBanner = $(this.element).find('.bannerList li:first').addClass('current');
+		
+		if(this.options.indicators){
 			this.buildIndicators();
 		}
 		if(!this.options.arrows){
 			this.hideArrows();
 		}
-		if($(this.element).find('.bannerList li').length > 1 && this.options.autoRotate){
-			this.startTimer();
+		if(this._bannerCount > 1 && this.options.autoRotate){
+			this.toggleTimer();
 		}
 		this.bindEvents();
 	};
@@ -42,14 +48,33 @@
 	};
 	
 	Simplebanner.prototype.bindEvents = function() {
-		$(this.element).hover(
-			function(){
-				this.stopTimer();
-			},
-			function(){
-				this.startTimer();
-			}
-		);
+		var self = this;
+		if(this.options.indicators){
+			$(this.element).find('.bannerIndicators li').click(function() {
+				if (!$(this).hasClass('active')) {
+					this.goToBanner($(this).index());
+				}
+			});
+		}
+		if(this.options.arrows){
+			$(this.element).find('.bannerControlsWpr').click(function() {
+				if($(this).hasClass('bannerControlsPrev')){
+					this.previousBanner();
+				} else {
+					this.nextBanner();
+				}
+			});
+		}
+		if(self.options.pauseOnHover){
+			self.element.on({
+				"mouseenter": function() {
+					self.toggleTimer(true);
+				},
+				"mouseleave": function() {
+					self.toggleTimer(false);
+				}
+			});
+		}
 	};
 	
 	Simplebanner.prototype.nextBanner = function() {
@@ -69,7 +94,7 @@
 		});
 	};
 
-	Simplebanner.prototype.featPrev = function() {
+	Simplebanner.prototype.previousBanner = function() {
 		var newCurr;
 		if ($('#featuredListWpr .currFeat').prev().length > 0) {
 			newCurr = $('#featuredListWpr .currFeat').prev();
@@ -86,7 +111,7 @@
 		});
 	};
 
-	Simplebanner.prototype.goToSlide = function(slideIndex) {
+	Simplebanner.prototype.goToBanner = function(slideIndex) {
 		var newMarg = slideIndex * _featWidth;
 		$('#featuredListWpr .currFeat').removeClass('currFeat');
 		$('#slideIndicator .active').removeClass('active');
@@ -97,7 +122,7 @@
 		});
 	};
 
-	Simplebanner.prototype.buildBubbles = function() {
+	Simplebanner.prototype.buildIndicators = function() {
 		$('#featuredListWpr .banner-slide').each(function(){
 			$('#slideIndicator ul').append('<li class="featSlidebtn"></li>');
 		});
@@ -105,41 +130,26 @@
 
 	Simplebanner.prototype.iniFeatured = function() {
 		if ($('#featuredListWpr .banner-slide').length > 1) {
-			buildBubbles();
+			buildIndicators();
 			$('#slideIndicator').css({'display':'block'});
 			$('#featuredListWpr li').first().addClass('currFeat');
 			$('#slideIndicator li').first().addClass('active');
 			_featWidth = $('#featuredListWpr ul li').width();
-			$('#slideIndicator li').click(function () {
-				if (!$(this).hasClass('active')) {
-					goToSlide($(this).index());
-				}
-			});
-			$('.featControlWpr').click(function () {
-				switch ($(this).attr('id')) {
-				case 'featControlsPrev':
-					featPrev();
-					break;
-				case 'featControlsNext':
-					nextBanner();
-					break;
-				};
-			});
+			
 		}
 	};
 
-	Simplebanner.prototype.startTimer = function() {
-		this.stopTimer();
-		this._timer = setTimeout("nextBanner();",this.options.rotateTimeout); // change this one
-	};
-
-	Simplebanner.prototype.stopTimer = function() {
-		clearTimeout(this._timer);
-	};
-
-	Simplebanner.prototype.nextBanner = function() {
-		this.nextBanner();
-		this.startTimer();
+	Simplebanner.prototype.toggleTimer = function(timer) {
+		var this = self;
+		if(!hover){
+			clearTimeout(self._timer);
+			self._timer = setTimeout(
+				self.nextBanner();
+				self.toggleTimer(false);
+			,self.options.rotateTimeout);
+		} else {
+			clearTimeout(self._timer);
+		}
 	};
 
 	$.fn.simplebanner = function(options) {

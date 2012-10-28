@@ -4,14 +4,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Simple Rotating Banner</title>
 		<link rel="stylesheet" type="text/css" href="jquery.simplebanner.css"/>
-		<script type="text/javascript" src="js/jquery.simplebanner.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="jquery.simplebanner.js"></script>
 		<style>
 			body, html {font:100%;padding:0;margin:0;width:100%;height:100%;background:#666;}
 			#siteWpr {width:960px;margin:0 auto;}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('.simpleBanner').stickybanner();
+				$('.simpleBanner').simplebanner();
 			});
 		</script>
 	</head>
@@ -19,7 +20,7 @@
 		<div id="siteWpr">
 			<div class="simpleBanner">
 				<div class="bannerControlsWpr bannerControlsPrev"><div class="bannerControls"></div></div>
-				<div class="bannerIndicator"><ul></ul></div>
+				<div class="bannerIndicators"><ul></ul></div>
 				<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
 				<div class="bannerListWpr">
 					<ul class="bannerList">
