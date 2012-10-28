@@ -4,11 +4,9 @@
 
 .simpleBanner ul {list-style:none;margin:0;padding:0;}
 .simpleBanner .bannerListWpr {clear:both;overflow:hidden;}
-.simpleBanner .bannerListWpr ul {width:50000px;overflow:hidden;z-index:1;}
-.simpleBanner .bannerListWpr ul li {float:left;position:relative;width:960px;}
+.simpleBanner .bannerListWpr ul {width:50000px;overflow:hidden;}
+.simpleBanner .bannerListWpr ul li {float:left;width:960px;}
 .simpleBanner .bannerListWpr ul li img {display:block;}
-.simpleBanner .bannerListWpr ul li .featBtnWpr {background:#FF7E00;border-top:1px solid #CCCCCC;bottom:0;left:0;min-height:27px;opacity:0.8;position:absolute;width:582px;}
-.simpleBanner .bannerListWpr ul li .featBtnWpr a {color:#FFFFFF;display:block;padding:5px 40px 5px 15px;text-decoration:none;}
 .simpleBanner .bannerControlsWpr {cursor:pointer;padding:10px 12px;position:absolute;top:37%;background:#CCC;}
 .simpleBanner .bannerControlsPrev {border-radius:0 5px 5px 0;left:0;padding-left:5px;}
 .simpleBanner .bannerControlsNext {border-radius:5px 0 0 5px;right:0;padding-right:5px;}
@@ -19,6 +17,6 @@
 .simpleBanner .bannerControls {width:0;height:0;border-style:solid;}
 .simpleBanner .bannerIndicators {background:transparent;right:20px;opacity:0.9;padding:4px 8px 4px 0;position:absolute;bottom:25px;}
 .simpleBanner .bannerIndicators ul {overflow:hidden;}
-.simpleBanner .bannerIndicators .bannerIndicator {background:#5D5D5D;border-radius:7px 7px 7px 7px;cursor:pointer;float:left;height:15px;margin-left:8px;width:15px;z-index:5;}
+.simpleBanner .bannerIndicators .bannerIndicator {background:#5D5D5D;border-radius:7px 7px 7px 7px;cursor:pointer;float:left;height:15px;margin-left:8px;width:15px;}
 .simpleBanner .bannerIndicators .bannerIndicator:hover {background:#FFF;}
 .simpleBanner .bannerIndicators .bannerIndicator.current {background:#FF7E00;cursor:default;}

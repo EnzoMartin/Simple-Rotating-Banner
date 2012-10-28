@@ -55,7 +55,9 @@
 			self.element.find('.bannerIndicator').on({
 				'click': function() {
 					if (!$(this).hasClass('active')) {
-						self.goToBanner($(this).index());
+						var slideIndex = $(this).index();
+						self._newBanner = self.element.find('.bannerList li:eq(' + slideIndex + ')');
+						self.goToBanner(slideIndex);
 					}
 				}
 			});
