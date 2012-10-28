@@ -13,6 +13,7 @@
 		this._paused = false;
 		this._timer = {};
 		this._currentBanner = {};
+		this._newBanner = {};
 		this._bannerWidth = 0;
 		this._bannerCount = 0;
 		this.options = $.extend({
@@ -29,7 +30,10 @@
 	Simplebanner.prototype.init = function() {
 		this._bannerCount = this.element.find('.bannerList li').length;
 		this._bannerWidth = this.element.find('.bannerList li').outerWidth();
-		this.currentBanner = this.element.find('.bannerList li:first').addClass('current');
+		if(!this._bannerWidth){
+			this._bannerWidth = this.element.width();
+		}
+		this._currentBanner = this.element.find('.bannerList li:first').addClass('current');
 		
 		if(this.options.indicators){
 			this.buildIndicators();
@@ -48,8 +52,9 @@
 	Simplebanner.prototype.bindEvents = function() {
 		var self = this;
 		if(self.options.indicators){
-			self.element.find('.bannerIndicators li').on({
+			self.element.find('.bannerIndicator').on({
 				'mouseclick': function() {
+						console.log('sup');
 					if (!$(this).hasClass('active')) {
 						self.goToBanner($(this).index());
 					}
@@ -67,7 +72,7 @@
 				}
 			});
 		}
-		if(self.options.pauseOnHover){
+		if(self.options.pauseOnHover && self.options.autoRotate){
 			self.element.on({
 				"mouseenter": function() {
 					self.toggleTimer(true);
@@ -80,48 +85,37 @@
 	};
 	
 	Simplebanner.prototype.nextBanner = function() {
-		var newCurr;
-		if ($('#featuredListWpr .currFeat').next().length > 0) {
-			newCurr = $('#featuredListWpr .currFeat').next();
+		if (this._currentBanner.next().length) {
+			this._newBanner = this._currentBanner.next();
 		} else {
-			newCurr = $('#featuredListWpr li').first();
+			this._newBanner = this.element.find('.bannerList li:first');
 		}
-		$('#featuredListWpr .currFeat').removeClass('currFeat');
-		var newSlide = parseInt($(newCurr).addClass('currFeat').index());
-		var newMarg = newSlide * _featWidth;
-		$('#slideIndicator .active').removeClass('active');
-		$('#slideIndicator li:eq(' + newSlide + ')').addClass('active');
-		$('#featuredListWpr ul').stop(false, true).animate({
-			'marginLeft': -newMarg
-		});
+		this.goToBanner(this._newBanner.index());
 	};
 
 	Simplebanner.prototype.previousBanner = function() {
-		var newCurr;
-		if ($('#featuredListWpr .currFeat').prev().length > 0) {
-			newCurr = $('#featuredListWpr .currFeat').prev();
+		if (this._currentBanner.prev().length) {
+			this._newBanner = this._currentBanner.prev();
 		} else {
-			newCurr = $('#featuredListWpr li').last();
+			this._newBanner = this.element.find('.bannerList li:last');
 		}
-		$('#featuredListWpr .currFeat').removeClass('currFeat');
-		var newSlide = parseInt($(newCurr).addClass('currFeat').index());
-		var newMarg = newSlide * _featWidth;
-		$('#slideIndicator .active').removeClass('active');
-		$('#slideIndicator li:eq(' + newSlide + ')').addClass('active');
-		$('#featuredListWpr ul').stop(false, true).animate({
-			'marginLeft': -newMarg
-		});
+		this.goToBanner(this._newBanner.index());
 	};
-
+	
+	/**
+     * Goes to a specific slide
+     * @param slideIndex
+     */
 	Simplebanner.prototype.goToBanner = function(slideIndex) {
-		var newMarg = slideIndex * _featWidth;
-		$('#featuredListWpr .currFeat').removeClass('currFeat');
-		$('#slideIndicator .active').removeClass('active');
-		$('#featuredListWpr li:eq(' + slideIndex + ')').addClass('currFeat');
-		$('#slideIndicator li:eq(' + slideIndex + ')').addClass('active');
-		$('#featuredListWpr ul').stop(false, true).animate({
-			'marginLeft': -newMarg
-		});
+		var self = this;
+		self._currentBanner.removeClass('current');
+		self.element.find('.bannerIndicators .current').removeClass('current');
+		self._currentBanner = self._newBanner;
+		self._currentBanner.addClass('current');
+		self.element.find('.bannerIndicators li:eq(' + slideIndex + ')').addClass('current');
+		self.element.find('.bannerList').stop(false, true).animate({
+			'marginLeft': -slideIndex * self._bannerWidth
+		},self.options.animTime);
 	};
 
 	Simplebanner.prototype.buildIndicators = function() {
@@ -133,12 +127,17 @@
 		indicatorUl.find('li:first').addClass('active');
 	};
 
+	/**
+     * STarts or stops the timer
+     * @param timer
+     */
 	Simplebanner.prototype.toggleTimer = function(timer) {
 		var self = this;
 		clearTimeout(self._timer);
 		if(!timer){
 			self._timer = setTimeout(function(){
-				self.nextBanner().toggleTimer(false);
+				self.nextBanner();
+				self.toggleTimer(false);
 			},self.options.rotateTimeout);
 		}
 	};
@@ -154,7 +153,7 @@
 			var instance = self.data("stickyInstance");
 			
 			if(!self.attr('id')){
-				self.attr('id','simpleBanner-' + $.fn.simplebanner._instances.length+1);
+				self.attr('id','simpleBanner-' + ($.fn.simplebanner._instances.length+1));
 			}
 			
 			if (instance && options) {

@@ -12,22 +12,26 @@
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('.simpleBanner').simplebanner();
+				$('.simpleBanner').simplebanner({autoRotate:false});
 			});
 		</script>
 	</head>
 	<body>
 		<div id="siteWpr">
 			<div class="simpleBanner">
+				<div class="bannerListWpr">
+					<ul class="bannerList">
+						<li><img src="samples/image1.jpg" /></li>
+						<li><img src="samples/image2.jpg" /></li>
+						<li><img src="samples/image3.jpg" /></li>
+						<li><img src="samples/image4.jpg" /></li>
+						<li><img src="samples/image5.jpg" /></li>
+						<li><img src="samples/image6.jpg" /></li>
+					</ul>
+				</div>
 				<div class="bannerControlsWpr bannerControlsPrev"><div class="bannerControls"></div></div>
 				<div class="bannerIndicators"><ul></ul></div>
 				<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
-				<div class="bannerListWpr">
-					<ul class="bannerList">
-						<li class="bannerSlide"><img src="http://hypernia.com/sites/default/files/25percentvoicebanner.png"></li>
-						<li class="bannerSlide"><img src="http://hypernia.com/sites/default/files/minecraftsalebanner5.jpg"></li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</body>
