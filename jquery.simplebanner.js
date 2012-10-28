@@ -126,23 +126,20 @@
 
 	Simplebanner.prototype.buildIndicators = function() {
 		var self = this;
-		var indicatorUl = self.find('.bannerIndicators ul');
-		self.element.find('.banner-slide').each(function(){
-			indicatorUl.append('<li class="featSlidebtn"></li>');
+		var indicatorUl = self.element.find('.bannerIndicators ul');
+		self.element.find('.bannerList li').each(function(){
+			indicatorUl.append('<li class="bannerIndicator"></li>');
 		});
 		indicatorUl.find('li:first').addClass('active');
 	};
 
 	Simplebanner.prototype.toggleTimer = function(timer) {
 		var self = this;
+		clearTimeout(self._timer);
 		if(!timer){
-			clearTimeout(self._timer);
 			self._timer = setTimeout(function(){
-				self.nextBanner();
-				self.toggleTimer(false);
+				self.nextBanner().toggleTimer(false);
 			},self.options.rotateTimeout);
-		} else {
-			clearTimeout(self._timer);
 		}
 	};
 
