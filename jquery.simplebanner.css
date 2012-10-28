@@ -1,5 +1,7 @@
 .simpleBanner {overflow: hidden;position: relative;width: 960px;padding:0 0 6px 0;}
 .simpleBanner.hiddenArrows .bannerControlWpr {display:none;}
+.simpleBanner.hiddenIndicators .bannerIndicators {display:none;}
+
 .simpleBanner ul {list-style:none;margin:0;padding:0;}
 .simpleBanner .bannerListWpr {clear: both;overflow: hidden;width: 960px;}
 .simpleBanner .bannerListWpr ul {width: 50000px;overflow:hidden;}

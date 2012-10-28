@@ -27,15 +27,17 @@
 	};
 
 	Simplebanner.prototype.init = function() {
-		this._bannerCount = $(this.element).find('.bannerList li').length;
-		this._bannerWidth = $(this.element).find('.bannerList li').outerWidth();
-		this.currentBanner = $(this.element).find('.bannerList li:first').addClass('current');
+		this._bannerCount = this.element.find('.bannerList li').length;
+		this._bannerWidth = this.element.find('.bannerList li').outerWidth();
+		this.currentBanner = this.element.find('.bannerList li:first').addClass('current');
 		
 		if(this.options.indicators){
 			this.buildIndicators();
+		} else {
+			this.element.addClass('hiddenIndicators');
 		}
 		if(!this.options.arrows){
-			this.hideArrows();
+			this.element.addClass('hiddenArrows');
 		}
 		if(this._bannerCount > 1 && this.options.autoRotate){
 			this.toggleTimer();
@@ -43,21 +45,17 @@
 		this.bindEvents();
 	};
 	
-	Simplebanner.prototype.hideArrows = function() {
-		$(this.element).addClass('hiddenArrows');
-	};
-	
 	Simplebanner.prototype.bindEvents = function() {
 		var self = this;
 		if(this.options.indicators){
-			$(this.element).find('.bannerIndicators li').click(function() {
+			this.element.find('.bannerIndicators li').click(function() {
 				if (!$(this).hasClass('active')) {
 					this.goToBanner($(this).index());
 				}
 			});
 		}
 		if(this.options.arrows){
-			$(this.element).find('.bannerControlsWpr').click(function() {
+			this.element.find('.bannerControlsWpr').click(function() {
 				if($(this).hasClass('bannerControlsPrev')){
 					this.previousBanner();
 				} else {
@@ -140,13 +138,13 @@
 	};
 
 	Simplebanner.prototype.toggleTimer = function(timer) {
-		var this = self;
-		if(!hover){
+		var self = this;
+		if(!timer){
 			clearTimeout(self._timer);
-			self._timer = setTimeout(
+			self._timer = setTimeout(function(){
 				self.nextBanner();
 				self.toggleTimer(false);
-			,self.options.rotateTimeout);
+			},self.options.rotateTimeout);
 		} else {
 			clearTimeout(self._timer);
 		}
