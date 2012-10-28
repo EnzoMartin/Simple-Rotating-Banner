@@ -12,16 +12,20 @@ Just call `$('#element').simplebanner();` to initialize the plugin on the elemen
 
 ```html
 <div class="simpleBanner">
-  <div class="bannerControlsWpr bannerControlsPrev"><div class="bannerControls"></div></div>
-	<div class="bannerIndicators"><ul></ul></div>
-	<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
 	<div class="bannerListWpr">
 		<ul class="bannerList">
 			<!-- LI list goes here -->
-			<li><img src="image1.jpg" /></li>
-			<li><img src="image2.jpg" /></li>
+			<li><img src="samples/image1.jpg" /></li>
+			<li><img src="samples/image2.jpg" /></li>
+			<li><img src="samples/image3.jpg" /></li>
+			<li><img src="samples/image4.jpg" /></li>
+			<li><img src="samples/image5.jpg" /></li>
+			<li><img src="samples/image6.jpg" /></li>
 		</ul>
 	</div>
+	<div class="bannerControlsWpr bannerControlsPrev"><div class="bannerControls"></div></div>
+	<div class="bannerIndicators"><ul></ul></div>
+	<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
 </div>
 
 ```
