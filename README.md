@@ -49,7 +49,7 @@ Enjoy!
 
 ## License
 
-Copyright (c) 2010-2013 Marcus Ekwall
+Copyright (c) 2010-2013 Enzo Martin
 
 The MIT License
 
