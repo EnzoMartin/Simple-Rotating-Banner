@@ -1,0 +1,36 @@
+{
+	"name": "simplebanner",
+	"title": "Simple Rotating Banner",
+	"description": "A very simplistic rotating banner with only a handful of options, meant to be extremely easy to use and lightweight.",
+	"keywords": [
+		"rotating",
+		"banner",
+		"lightbox",
+		"simple"
+	],
+	"version": "0.0.1",
+	"author": {
+		"name": "Enzo Martin",
+		"email": "enzo.r.martin@gmail.com",
+		"url": "https://github.com/EnzoMartin78"
+	},
+	"maintainers": [
+		{
+			"name": "Enzo Martin",
+			"email": "enzo.r.martin@gmail.com",
+			"url": "https://github.com/EnzoMartin78"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/EnzoMartin78/Simple-Banner/blob/master/README.md"
+		}
+	],
+	"bugs": "https://github.com/EnzoMartin78/Simple-Banner/issues",
+	"homepage": "https://github.com/EnzoMartin78/Simple-Banner",
+	"docs": "https://github.com/EnzoMartin78/Simple-Banner/blob/master/README.md",
+	"dependencies": {
+		"jquery": ">=1.7"
+	}
+}
