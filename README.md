@@ -8,10 +8,10 @@ Usage
 
 ### Element init
 
-Just call `$('#element').simplebanner();` to initialize the plugin on the element of your choice, make sure the element has the following HTML mark-up:
+Just call `$('#rotating').simplebanner();` to initialize the plugin on the element of your choice, make sure the element has the following HTML mark-up:
 
 ```html
-<div class="simpleBanner">
+<div id="rotating" class="simpleBanner">
 	<div class="bannerListWpr">
 		<ul class="bannerList">
 			<!-- LI list goes here -->
