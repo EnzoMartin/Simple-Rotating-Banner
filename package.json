@@ -1,0 +1,34 @@
+{
+  "name": "simple-rotating-banner",
+  "description": "A very simplistic rotating banner with only a handful of options, meant to be extremely easy to use and lightweight.",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:EnzoMartin/Simple-Rotating-Banner.git"
+  },
+  "license": "MIT",
+  "author": "Enzo Martin <enzo.r.martin@gmail.com>",
+  "contributors": [
+    {
+      "name": "Enzo Martin",
+      "email": "enzo.r.martin@gmail.com"
+    }
+  ],
+  "files": [
+    "jquery.simplebanner.js",
+    "jquery.simplebanner.min.js",
+    "jquery.simplebanner.css"
+  ],
+  "keywords": [
+    "dom",
+    "rotating",
+    "banner",
+    "lightbox",
+    "simple",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  }
+}

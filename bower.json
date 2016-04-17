@@ -1,7 +1,7 @@
 {
     "name" : "simplebanner",
-    "version" : "1.0.0",
-    "main" : ["jquery.simplebanner.js","jquery.simplebanner.css"],
+    "version" : "1.0.1",
+    "main" : ["jquery.simplebanner.min.js","jquery.simplebanner.css"],
     "dependencies" : {
         "jquery" : ">=1.7.0"
     },

@@ -8,28 +8,28 @@
 		"lightbox",
 		"simple"
 	],
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": {
 		"name": "Enzo Martin",
 		"email": "enzo.r.martin@gmail.com",
-		"url": "https://github.com/EnzoMartin78"
+		"url": "https://github.com/EnzoMartin"
 	},
 	"maintainers": [
 		{
 			"name": "Enzo Martin",
 			"email": "enzo.r.martin@gmail.com",
-			"url": "https://github.com/EnzoMartin78"
+			"url": "https://github.com/EnzoMartin"
 		}
 	],
 	"licenses": [
 		{
 			"type": "MIT",
-			"url": "https://github.com/EnzoMartin78/Simple-Banner/blob/master/README.md"
+			"url": "https://github.com/EnzoMartin/Simple-Rotating-Banner/blob/master/README.md"
 		}
 	],
-	"bugs": "https://github.com/EnzoMartin78/Simple-Banner/issues",
-	"homepage": "https://github.com/EnzoMartin78/Simple-Banner",
-	"docs": "https://github.com/EnzoMartin78/Simple-Banner/blob/master/README.md",
+	"bugs": "https://github.com/EnzoMartin/Simple-Rotating-Banner/issues",
+	"homepage": "https://github.com/EnzoMartin/Simple-Rotating-Banner",
+	"docs": "https://github.com/EnzoMartin/Simple-Rotating-Banner/blob/master/README.md",
 	"dependencies": {
 		"jquery": ">=1.7"
 	}
