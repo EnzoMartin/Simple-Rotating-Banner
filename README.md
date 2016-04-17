@@ -1,16 +1,21 @@
 Simple-Rotating-Banner
 ======================
 
-A very simple rotating banner jQuery plugin
+A very simple rotating banner jQuery plugin, minimal CSS and JS
 
-Usage
------
+### Usage:
 
-### Element init
+- Download from [GitHub][download], or `npm install simple-rotating-banner` if you're using [NPM][npm]
+- Include jQuery, Simple Banner JS, and Simple Banner CSS
+- Invoke Simple Banner on the desired DOM element(s)
 
 Just call `$('#rotating').simplebanner();` to initialize the plugin on the element of your choice, make sure the element has the following HTML mark-up:
 
 ```html
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.simplebanner.min.js"></script>
+<link type="text/css" href="jquery.simplebanner.css" rel="stylesheet"/>
+
 <div id="rotating" class="simpleBanner">
 	<div class="bannerListWpr">
 		<ul class="bannerList">
@@ -27,25 +32,26 @@ Just call `$('#rotating').simplebanner();` to initialize the plugin on the eleme
 	<div class="bannerIndicators"><ul></ul></div>
 	<div class="bannerControlsWpr bannerControlsNext"><div class="bannerControls"></div></div>
 </div>
-
 ```
-You can place anything you want inside the `<li>`, just remember that it uses `overflow:hidden` on the container
+
+*Note:* You can place anything you want inside the `<li>`, just remember that it uses `overflow:hidden` on the container
 
 
-### Available options
+### Options:
 
-* `indicators` defaults to `true` - This will add slide indicators at the bottom of the banner rotater
-* `pauseOnHover` defaults to `true` - This will make the banner rotater pause when you hover over it with the mouse if `autoRotate` is enabled
-* `autoRotate` defaults to `true` - This will make it rotate through all the banners automatically
-* `rotateTimeout` defaults to `5000` (5 seconds) - If `autoRotate` is enabled, this controls how long each banner displays before going to the next one
-* `animTime` defaults to `300` (0.3 seconds) - This controls the speed at which the rotation animation happens
+| Name  | Default | Description |
+| ------------- | ------------- | ------------- |
+| indicators | `true` | Adds slide indicators at the bottom |
+| autoRotate | `true` | Automatically rotate through all the banners |
+| pauseOnHover | `true` | If `autoRotate` is enabled, hovering the mouse over a banner will pause the timer |
+| rotateTimeout | `5000` | If `autoRotate` is `true`, this controls how long each banner displays before going to the next one, in `ms` |
+| animTime | `300` | Controls the speed at which the rotation animation happens, in `ms` |
 
-Requirements
-------------
+### Requirements
 
-jQuery is needed, tested on 1.7+. You'll also need the included CSS file, feel free to customize it to what you need. It's recommended you have a width set to the `<li>` for the banners, if not, it'll use the width of the container if it can't get the `<li>` width
+jQuery is needed, tested on 1.7+. You'll also need the included CSS file.
 
-Enjoy!
+It's recommended you have a width set to the `<li>` for the banners, if not, it'll use the width of the container if it can't get the `<li>` width
 
 ## License
 
@@ -70,3 +76,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[npm]:https://www.npmjs.com/
+[download]:https://github.com/EnzoMartin/Simple-Rotating-Banner/releases/latest
