@@ -1,11 +1,4 @@
-/* Written by Enzo Martin
- *
- * GitHub: https://github.com/EnzoMartin/
- * Twitter: EnzoMartin
- */
-
-;(function($,window,undefined){
-
+;(function($,win){
     'use strict';
 
     /**
@@ -30,6 +23,7 @@
             rotateTimeout:5000,
             animTime:300
         },options);
+
         this.init();
     };
 
@@ -37,12 +31,14 @@
      * Initializer
      */
     Simplebanner.prototype.init = function(){
-        this._bannerCount = this.element.find('.bannerList li').length;
-        this._bannerWidth = this.element.find('.bannerList li').outerWidth();
+        var $banners = this.element.find('.bannerList li');
+        this._bannerCount = $banners.length;
+        this._bannerWidth = $banners.outerWidth();
+
         if(!this._bannerWidth){
             this._bannerWidth = this.element.width();
         }
-        this._currentBanner = this.element.find('.bannerList li:first').addClass('current');
+        this._currentBanner = $banners.first().addClass('current');
 
         if(this.options.indicators){
             this.buildIndicators();
@@ -55,23 +51,28 @@
         if(this._bannerCount > 1 && this.options.autoRotate){
             this.toggleTimer();
         }
+
         this.bindEvents();
     };
 
-    // This sets the basic events based off the options selected
+    /**
+     * This sets the basic events based off the options selected
+     */
     Simplebanner.prototype.bindEvents = function(){
         var self = this;
         if(self.options.indicators){
             self.element.find('.bannerIndicator').on({
                 'click':function(){
-                    if(!$(this).hasClass('active')){
-                        var slideIndex = $(this).index();
+                    var $this = $(this);
+                    if(!$this.hasClass('active')){
+                        var slideIndex = $this.index();
                         self._newBanner = self.element.find('.bannerList li:eq(' + slideIndex + ')');
                         self.goToBanner(slideIndex);
                     }
                 }
             });
         }
+
         if(self.options.arrows){
             self.element.find('.bannerControlsWpr').on({
                 'click':function(){
@@ -83,6 +84,7 @@
                 }
             });
         }
+
         if(self.options.pauseOnHover && self.options.autoRotate){
             self.element.on({
                 'mouseenter':function(){
@@ -95,23 +97,29 @@
         }
     };
 
-    // Goes to the next banner - loops back to the first banner
+    /**
+     * Goes to the next banner - loops back to the first banner
+     */
     Simplebanner.prototype.nextBanner = function(){
         if(this._currentBanner.next().length){
             this._newBanner = this._currentBanner.next();
         } else {
             this._newBanner = this.element.find('.bannerList li:first');
         }
+
         this.goToBanner(this._newBanner.index());
     };
 
-    // Goes to the previous banner - loops back to the last banner
+    /**
+     * Goes to the previous banner - loops back to the last banner
+     */
     Simplebanner.prototype.previousBanner = function(){
         if(this._currentBanner.prev().length){
             this._newBanner = this._currentBanner.prev();
         } else {
             this._newBanner = this.element.find('.bannerList li:last');
         }
+
         this.goToBanner(this._newBanner.index());
     };
 
@@ -131,13 +139,16 @@
         },self.options.animTime);
     };
 
-    // Create the correct amount of indicators based off total banners
+    /**
+     * Create the correct amount of indicators based off total banners
+     */
     Simplebanner.prototype.buildIndicators = function(){
         var self = this;
         var indicatorUl = self.element.find('.bannerIndicators ul');
         self.element.find('.bannerList li').each(function(){
             indicatorUl.append('<li class="bannerIndicator"></li>');
         });
+
         indicatorUl.find('li:first').addClass('current');
     };
 
@@ -156,16 +167,23 @@
         }
     };
 
-    // jQuery wrapper method
+    /**
+     * jQuery wrapper method
+     * @param options
+     * @returns {boolean|jQuery}
+     */
     $.fn.simplebanner = function(options){
-        var method,args,ret = false;
+        var method = false;
+        var ret = false;
+        var args = [];
+
         if(typeof options === 'string'){
             args = [].slice.call(arguments,0);
         }
 
         this.each(function(){
             var self = $(this);
-            var instance = self.data('stickyInstance');
+            var instance = self.data('bannerInstance');
 
             if(!self.attr('id')){
                 self.attr('id','simpleBanner-' + ($.fn.simplebanner._instances.length + 1));
@@ -183,7 +201,7 @@
                 }
             } else {
                 instance = new Simplebanner(self,options || {});
-                self.data('stickyInstance',instance);
+                self.data('bannerInstance',instance);
                 $.fn.simplebanner._instances.push(instance);
             }
         });
@@ -191,12 +209,4 @@
     };
 
     $.fn.simplebanner._instances = [];
-
-    // Deathstar death beam
-    $(document).on('pageleave',function(){
-        $.each($.fn.simplebanner._instances,function(){
-            this.children().off();
-        });
-        $.fn.simplebanner._instances = [];
-    });
-}($,window));
+}(jQuery,window));
