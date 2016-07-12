@@ -20,6 +20,7 @@
             indicators:true,
             pauseOnHover:true,
             autoRotate:true,
+            maxRotations: null,
             rotateTimeout:5000,
             animTime:300
         },options);
@@ -34,6 +35,7 @@
         var $banners = this.element.find('.bannerList li');
         this._bannerCount = $banners.length;
         this._bannerWidth = $banners.outerWidth();
+        this._rotationCount = 0;
 
         if(!this._bannerWidth){
             this._bannerWidth = this.element.width();
@@ -105,6 +107,7 @@
             this._newBanner = this._currentBanner.next();
         } else {
             this._newBanner = this.element.find('.bannerList li:first');
+            this._rotationCount++;
         }
 
         this.goToBanner(this._newBanner.index());
@@ -159,7 +162,7 @@
     Simplebanner.prototype.toggleTimer = function(timer){
         var self = this;
         clearTimeout(self._timer);
-        if(!timer){
+        if(!timer && (this.options.maxRotations === null || this._rotationCount < this.options.maxRotations)){
             self._timer = setTimeout(function(){
                 self.nextBanner();
                 self.toggleTimer(false);

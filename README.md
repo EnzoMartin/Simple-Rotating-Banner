@@ -43,7 +43,8 @@ Just call `$('#rotating').simplebanner();` to initialize the plugin on the eleme
 | ------------- | ------------- | ------------- |
 | indicators | `true` | Adds slide indicators at the bottom |
 | autoRotate | `true` | Automatically rotate through all the banners |
-| pauseOnHover | `true` | If `autoRotate` is enabled, hovering the mouse over a banner will pause the timer |
+| maxRotations | `null` | If `autoRotate` is `true`, stop auto-rotating after all slides have rotated through X times |
+| pauseOnHover | `true` | If `autoRotate` is `true`, hovering the mouse over a banner will pause the timer |
 | rotateTimeout | `5000` | If `autoRotate` is `true`, this controls how long each banner displays before going to the next one, in `ms` |
 | animTime | `300` | Controls the speed at which the rotation animation happens, in `ms` |
 
