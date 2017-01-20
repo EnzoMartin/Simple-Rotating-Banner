@@ -23,7 +23,7 @@
             maxRotations: null,
             rotateTimeout:5000,
             animTime:300,
-            slideChange: null
+            onChange: null
         },options);
 
         this.init();
@@ -141,9 +141,9 @@
         self.element.find('.bannerList').stop(false,true).animate({
             'marginLeft':-slideIndex * self._bannerWidth
         },self.options.animTime);
-        
-        if(self.options.slideChange !== null){
-            self.options.slideChange(slideIndex);
+
+        if(typeof self.options.onChange === 'function'){
+            self.options.onChange(slideIndex);
         }
     };
 
